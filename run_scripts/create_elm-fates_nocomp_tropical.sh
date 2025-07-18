@@ -28,11 +28,11 @@ rm -rf ${CASE_NAME}
 
 cd ${CASE_NAME}
 
-./xmlchange STOP_N=20
+./xmlchange STOP_N=50
 ./xmlchange STOP_OPTION=nyears
 ./xmlchange REST_N=10
 ./xmlchange REST_OPTION=nyears
-./xmlchange RESUBMIT=20
+./xmlchange RESUBMIT=7
 ./xmlchange SAVE_TIMING=FALSE
 ./xmlchange DEBUG=FALSE
 
@@ -42,9 +42,9 @@ cd ${CASE_NAME}
 ./xmlchange DATM_CLMNCEP_YR_START=1965
 ./xmlchange DATM_CLMNCEP_YR_END=2014
 
-./xmlchange LND_DOMAIN_FILE=domain.lnd.fv4x5_gx3v7.091218_tropics.nc
+./xmlchange LND_DOMAIN_FILE=tropical_domain.nc
 ./xmlchange LND_DOMAIN_PATH=/global/homes/j/jneedham/tropical-fixed-biog/domainsurf
-./xmlchange ATM_DOMAIN_FILE=domain.lnd.fv4x5_gx3v7.091218_tropics.nc
+./xmlchange ATM_DOMAIN_FILE=tropical_domain.nc
 ./xmlchange ATM_DOMAIN_PATH=/global/homes/j/jneedham/tropical-fixed-biog/domainsurf
 
 

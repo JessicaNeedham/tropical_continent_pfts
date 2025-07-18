@@ -8,7 +8,7 @@ export MACH=pm-cpu
 export PROJECT=e3sm
 export COMPILER=gnu
 
-export TAG='full_fates_tropical_control_v2'
+export TAG='nocomp_fates_tropical_control'
 export CASEROOT=/pscratch/sd/j/jneedham/elm_runs/tropical_fb
 export CIMEROOT=/global/homes/j/jneedham/E3SM-dev/E3SM/cime/scripts
 cd ${CIMEROOT}
@@ -28,11 +28,11 @@ rm -rf ${CASE_NAME}
 
 cd ${CASE_NAME}
 
-./xmlchange STOP_N=20
+./xmlchange STOP_N=50
 ./xmlchange STOP_OPTION=nyears
 ./xmlchange REST_N=10
 ./xmlchange REST_OPTION=nyears
-./xmlchange RESUBMIT=9
+./xmlchange RESUBMIT=7
 ./xmlchange SAVE_TIMING=FALSE
 ./xmlchange DEBUG=FALSE
 
@@ -42,9 +42,9 @@ cd ${CASE_NAME}
 ./xmlchange DATM_CLMNCEP_YR_START=1965
 ./xmlchange DATM_CLMNCEP_YR_END=2014
 
-./xmlchange LND_DOMAIN_FILE=domain.lnd.fv4x5_gx3v7.091218_tropics.nc
+./xmlchange LND_DOMAIN_FILE=tropical_domain.nc
 ./xmlchange LND_DOMAIN_PATH=/global/homes/j/jneedham/tropical-fixed-biog/domainsurf
-./xmlchange ATM_DOMAIN_FILE=domain.lnd.fv4x5_gx3v7.091218_tropics.nc
+./xmlchange ATM_DOMAIN_FILE=tropical_domain.nc
 ./xmlchange ATM_DOMAIN_PATH=/global/homes/j/jneedham/tropical-fixed-biog/domainsurf
 
 
@@ -62,14 +62,14 @@ cd ${CASE_NAME}
 
 cat >>  user_nl_elm <<EOF
 use_fates_sp=.false.
-use_fates_nocomp=.false.
-use_fates_fixed_biogeog=.false.
+use_fates_nocomp=.true.
+use_fates_fixed_biogeog=.true.
 fates_electron_transport_model='FvCB1980'
 fates_radiation_model='twostream'
 use_fates_daylength_factor=.true.
 fates_spitfire_mode=1
-fsurdat = '/global/homes/j/jneedham/tropical-fixed-biog/domainsurf/surfdata_4x5_simyr2000_c130927_tropics.nc'
-fates_paramfile='/global/homes/j/jneedham/tropical-fixed-biog/param_files/fates_params_tropics_control.nc'
+fsurdat = '/global/homes/j/jneedham/tropical-fixed-biog/domainsurf/surf_control_nocomp.nc'
+fates_paramfile='/global/homes/j/jneedham/tropical-fixed-biog/param_files/v3/fates_params_calibrated_api40_nocomp_control.nc'
 hist_fincl1='FATES_VEGC', 'FATES_FRACTION', 'FATES_GPP','FATES_NEP','FATES_AUTORESP', 'FATES_HET_RESP', 'QVEGE', 'QVEGT',
 'QSOIL','EFLX_LH_TOT','FSH','FSR', 'FSDS','FSA','FIRE','FLDS','FATES_LAI', 
  'FATES_GPP_PF', 'FATES_NPP_PF', 'FATES_LEAFAREA_HT',  'FATES_CANOPYAREA_HT',
